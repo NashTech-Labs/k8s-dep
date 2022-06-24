@@ -36,18 +36,6 @@ def __format_data_for_deployment(client_output):
                 temp_list.append(temp_dict)
         return temp_list
 
-def __format_data_for_create_deployment(client_output):
-        temp_dict={}
-        temp_list=[]
-        json_data=ApiClient().sanitize_for_serialization(client_output)
-        #print("JSON_DATA OF KUBERNETES OBJECT:{}".format(json_data))
-        
-        if type(json_data) is str:
-            print("FORMAT_DATA :{}".format(type(json_data)))
-            json_data = json.loads(json_data)
-        temp_list.append(json_data)
-        return temp_list
-
 def get_deployments(cluster_details,namespace="default",all_namespaces=True):    
         client_api= __get_kubernetes_appsv1client(
             bearer_token=cluster_details["bearer_token"],
